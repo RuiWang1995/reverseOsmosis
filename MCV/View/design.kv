@@ -1,0 +1,544 @@
+<CalScreen>:
+    id: calScreen
+    displayStepSize: stepSize
+    displayPermeateSoluteConcentrationFromStage1: permeateSoluteConcentrationFromStage1
+    displayPermeateFlowRateFromStage1: permeateFlowRateFromStage1
+    displayRetentateSoluteConcentrationFromStage1: retentateSoluteConcentrationFromStage1
+    displayRetentateFlowRateFromStage1: retentateFlowRateFromStage1
+    displayRetentatePressureFromStage1: retentatePressureFromStage1
+    displayPermeateSoluteConcentrationFromStage2: permeateSoluteConcentrationFromStage2
+    displayPermeateFlowRateFromStage2: permeateFlowRateFromStage2
+    displayRetentateSoluteConcentrationFromStage2: retentateSoluteConcentrationFromStage2
+    displayRetentateFlowRateFromStage2: retentateFlowRateFromStage2
+    displayRetentatePressureFromStage2: retentatePressureFromStage2
+    displayPermeateSoluteConcentrationFromStage3: permeateSoluteConcentrationFromStage3
+    displayPermeateFlowRateFromStage3: permeateFlowRateFromStage3
+    displayRetentateSoluteConcentrationFromStage3: retentateSoluteConcentrationFromStage3
+    displayRetentateFlowRateFromStage3: retentateFlowRateFromStage3
+    displayRetentatePressureFromStage3: retentatePressureFromStage3
+
+    GridLayout:
+        cols:1
+        GridLayout
+            cols:2
+            size_hint: 1, 2.5
+            GridLayout:
+                padding: 15, 15
+                spacing: 1, 1
+                size_hint: 2.5, 2
+                cols:1
+                Label:
+                    text: "Membrane Info"
+                    bold: True
+                    font_size: '20sp'
+                    size_hint: 0.1, 0.2
+                GridLayout:
+                    cols:2
+                    size_hint: 1, 1.5
+                    Label:
+                        text: "Membrane name"
+                        font_size: '20sp'
+                        size_hint: 0.5, 0.5
+                    TextInput:
+                        id: membraneName
+                        text: "TMG20D-400"
+                        size_hint: 0.3, 0.5
+                    Label:
+                        text: "Length, m"
+                        font_size: '20sp'
+                        size_hint: 0.5, 0.5
+                    TextInput:
+                        id: membraneLength
+                        text: "1"
+                        size_hint: 0.3, 0.5
+                    Label:
+                        text: "width, m"
+                        font_size: '20sp'
+                        size_hint: 0.5, 0.5
+                    TextInput:
+                        id: membraneWidth
+                        text: "37.2"
+                        size_hint: 0.3, 0.5
+                    Label:
+                        text: "Aw @298.15K, m/atm/s"
+                        font_size: '20sp'
+                        size_hint: 0.5, 0.5
+                    TextInput:
+                        id: Aw_25
+                        text: "9.6203e-7"
+                        size_hint: 0.3, 0.5
+                    Label:
+                        text: "Bs @298.15K, m/s"
+                        font_size: '20sp'
+                        size_hint: 0.5, 0.5
+                    TextInput:
+                        id: Bs_25
+                        text: "1.61277e-7"
+                        size_hint: 0.3, 0.5
+                    Label:
+                        text: "Fouling factor"
+                        font_size: '20sp'
+                        size_hint: 0.5, 0.5
+                    TextInput:
+                        id: foulingFactor
+                        text: "1"
+                        size_hint: 0.3, 0.5
+                    Label:
+                        text: "feed spacer thickness, m"
+                        font_size: '20sp'
+                        size_hint: 0.5, 0.5
+                    TextInput:
+                        id: feedSpacerThickness
+                        text: "8.6e-4"
+                        size_hint: 0.3, 0.5
+                    Label:
+                        text: "feed spacer Void Fraction"
+                        font_size: '20sp'
+                        size_hint: 0.5, 0.5
+                    TextInput:
+                        id: spacerVoidFraction
+                        text: "0.9058"
+                        size_hint: 0.3, 0.5
+                    Label:
+                        text: "hydraulic Diameter, m"
+                        font_size: '20sp'
+                        size_hint: 0.5, 0.5
+                    TextInput:
+                        id: hydraulicDiameter
+                        text: "8.126e-4"
+                        size_hint: 0.3, 0.5
+                    Label:
+                        text: "length of Filament"
+                        font_size: '20sp'
+                        size_hint: 0.5, 0.5
+                    TextInput:
+                        id: lengthOfFilament
+                        text: "2.77e-3"
+                        size_hint: 0.3, 0.5
+                    Label:
+                        text: "characteristic constant, A*"
+                        font_size: '20sp'
+                        size_hint: 0.5, 0.5
+                    TextInput:
+                        id: charA
+                        text: "7.38"
+                        size_hint: 0.3, 0.5
+                    Label:
+                        text: "characteristic constant, n"
+                        font_size: '20sp'
+                        size_hint: 0.5, 0.5
+                    TextInput:
+                        id: charN
+                        text: "0.34"
+                        size_hint: 0.3, 0.3
+            GridLayout:
+                cols: 1
+                padding: 15, 15
+                spacing: 1, 1
+                size_hint: 1.8, 1
+                Label:
+                    text: "Steps Info"
+                    bold: True
+                    font_size: '20sp'
+                    size_hint: 0.1, 0.2
+                GridLayout:
+                    cols: 2
+                    size_hint: 1, 0.5
+                    Label:
+                        text: "Steps"
+                        font_size: '20sp'
+                        size_hint: 1, 0.2
+                    TextInput:
+                        id: steps
+                        text: "100"
+                        size_hint: 1, 0.2
+                    Label:
+                        text: "Step size, m"
+                        font_size: '20sp'
+                        size_hint: 1, 0.2
+                    Label:
+                        id: stepSize
+                        canvas.before:
+                            Color:
+                                rgb: 0.5, 0.5, 0.5, 1
+                            Rectangle:
+                                pos: self.pos
+                                size: self.size
+                        halign: 'center'
+                        valign: 'center'
+                        font_size: 40
+                        text_size: 550, None
+                        size_hint: 0.5, 0.2
+                        shorten: True
+                        shorten_from: 'right'
+                Label:
+                    text: "Stages Info"
+                    bold: True
+                    font_size: '20sp'
+                    size_hint: 0.1, 0.2
+                GridLayout:
+                    cols: 2
+                    Label:
+                        text: "PVs in 1st Stage"
+                        font_size: '20sp'
+                        size_hint: 1, 1
+                    TextInput:
+                        id: pvInFirstStage
+                        text: "4"
+                        size_hint: 1, 0.2
+                    Label:
+                        text: "PVs in 2nd Stage"
+                        font_size: '20sp'
+                        size_hint: 1, 1
+                    TextInput:
+                        id: pvInSecondStage
+                        text: "2"
+                        size_hint: 1, 0.2
+                    Label:
+                        text: "PVs in 3rd Stage"
+                        font_size: '20sp'
+                        size_hint: 1, 1
+                    TextInput:
+                        id: pvInThirdStage
+                        text: "1"
+                        size_hint: 1, 0.2
+                    Label:
+                        text: "Elements in PV"
+                        font_size: '20sp'
+                        size_hint: 1, 1
+                    TextInput:
+                        id: elementsInOnePV
+                        text: "6"
+                        size_hint: 1, 0.2
+
+
+
+
+        Label:
+            text: "Feed Info"
+            bold: True
+            font_size: '20sp'
+            size_hint: 0.1, 0.2
+        GridLayout:
+            cols:2
+            size_hint: 1, 0.5
+            GridLayout
+                cols:4
+                size_hint: 0.1, 0.5
+                Label:
+                    text: "Feed solute concentration, kg/m3"
+                    font_size: '20sp'
+                    size_hint: 1.3, 0.5
+                TextInput:
+                    id: feedSoluteConcentration
+                    text: "1.098"
+                    size_hint: 0.3, 0.5
+                Label:
+                    text: "Feed temperature, K"
+                    font_size: '20sp'
+                TextInput:
+                    id: feedTemperature
+                    text: "298.15"
+                    size_hint: 0.3, 0.5
+                Label:
+                    text: "Feed pressure, atm"
+                    font_size: '20sp'
+                TextInput:
+                    id: feedPressure
+                    text: '9.22'
+                    size_hint: 0.3, 0.5
+                Label:
+                    text: "Feed flow rate, m3/h"
+                    font_size: '20sp'
+                TextInput:
+                    id: feedFlowRate
+                    text: '42'
+                    size_hint: 0.3, 0.5
+            RelativeLayout:
+                size_hint: 0.015, 0.1
+                Button:
+                    background_color: 255, 0, 0, 1
+                    text: "run"
+                    font_size: '26sp'
+                    bold: True
+                    on_press: root.run(root.ids.membraneName.text, root.ids.membraneLength.text, root.ids.membraneWidth.text, root.ids.Aw_25.text, root.ids.Bs_25.text, root.ids.foulingFactor.text, root.ids.feedSpacerThickness.text, root.ids.spacerVoidFraction.text, root.ids.hydraulicDiameter.text, root.ids.lengthOfFilament.text, root.ids.charA.text, root.ids.charN.text, root.ids.steps.text, root.ids.feedSoluteConcentration.text, root.ids.feedTemperature.text, root.ids.feedPressure.text, root.ids.feedFlowRate.text, root.ids.pvInFirstStage.text, root.ids.pvInSecondStage.text, root.ids.pvInThirdStage.text, root.ids.elementsInOnePV.text)
+                    size_hint: 0.5,0.5
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        GridLayout:
+            cols:1
+            size_hint: 1, 1.5
+            GridLayout:
+                cols:4
+                size_hint: 1, 1
+                Label:
+                    text: "Permeate and Retentate Info"
+                    bold: True
+                    font_size: '20sp'
+                    size_hint: 1, 0.2
+                Label:
+                    text: "Stage1"
+                    bold: True
+                    font_size: '20sp'
+                    size_hint: 1, 0.2
+                Label:
+                    text: "Stage2"
+                    bold: True
+                    font_size: '20sp'
+                    size_hint: 1, 0.2
+                Label:
+                    text: "Stage3"
+                    bold: True
+                    font_size: '20sp'
+                    size_hint: 1, 0.2
+
+                Label:
+                    text: "Permeate solute concentration, kg/m3"
+                    font_size: '20sp'
+                    size_hint: 2.5, 0.3
+                Label:
+                    id: permeateSoluteConcentrationFromStage1
+                    canvas.before:
+                        Color:
+                            rgb: 0.5, 0.5, 0.5, 1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    halign: 'center'
+                    valign: 'center'
+                    font_size: 40
+                    text_size: 550, None
+                    size_hint: 1, 0.3
+                    shorten: True
+                    shorten_from: 'right'
+                Label:
+                    id: permeateSoluteConcentrationFromStage2
+                    canvas.before:
+                        Color:
+                            rgb: 0.8, 0.8, 0.8, 1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    halign: 'center'
+                    valign: 'center'
+                    font_size: 40
+                    text_size: 550, None
+                    size_hint: 1, 0.3
+                    shorten: True
+                    shorten_from: 'right'
+                Label:
+                    id: permeateSoluteConcentrationFromStage3
+                    canvas.before:
+                        Color:
+                            rgb: 0.5, 0.5, 0.5, 1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    halign: 'center'
+                    valign: 'center'
+                    font_size: 40
+                    text_size: 550, None
+                    size_hint: 1, 0.3
+                    shorten: True
+                    shorten_from: 'right'
+                Label:
+                    text: "Permeate flow rate, m3/h"
+                    font_size: '20sp'
+                    size_hint: 2.5, 0.3
+                Label:
+                    id: permeateFlowRateFromStage1
+                    canvas.before:
+                        Color:
+                            rgb: 0.8, 0.8, 0.8, 1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    halign: 'center'
+                    valign: 'center'
+                    font_size: 40
+                    text_size: 550, None
+                    size_hint: 1, 0.3
+                    shorten: True
+                    shorten_from: 'right'
+                Label:
+                    id: permeateFlowRateFromStage2
+                    canvas.before:
+                        Color:
+                            rgb: 0.5, 0.5, 0.5, 1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    halign: 'center'
+                    valign: 'center'
+                    font_size: 40
+                    text_size: 550, None
+                    size_hint: 1, 0.3
+                    shorten: True
+                    shorten_from: 'right'
+                Label:
+                    id: permeateFlowRateFromStage3
+                    canvas.before:
+                        Color:
+                            rgb: 0.8, 0.8, 0.8, 1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    halign: 'center'
+                    valign: 'center'
+                    font_size: 40
+                    text_size: 550, None
+                    size_hint: 1, 0.3
+                    shorten: True
+                    shorten_from: 'right'
+
+
+                Label:
+                    text: "Retentate solute concentration, kg/m3"
+                    font_size: '20sp'
+                    size_hint: 2.5, 0.3
+                Label:
+                    id: retentateSoluteConcentrationFromStage1
+                    canvas.before:
+                        Color:
+                            rgb: 0.5, 0.5, 0.5, 1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    halign: 'center'
+                    valign: 'center'
+                    font_size: 40
+                    text_size: 550, None
+                    size_hint: 1, 0.3
+                    shorten: True
+                    shorten_from: 'right'
+                Label:
+                    id: retentateSoluteConcentrationFromStage2
+                    canvas.before:
+                        Color:
+                            rgb: 0.8, 0.8, 0.8, 1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    halign: 'center'
+                    valign: 'center'
+                    font_size: 40
+                    text_size: 550, None
+                    size_hint: 1, 0.3
+                    shorten: True
+                    shorten_from: 'right'
+                Label:
+                    id: retentateSoluteConcentrationFromStage3
+                    canvas.before:
+                        Color:
+                            rgb: 0.5, 0.5, 0.5, 1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    halign: 'center'
+                    valign: 'center'
+                    font_size: 40
+                    text_size: 550, None
+                    size_hint: 1, 0.3
+                    shorten: True
+                    shorten_from: 'right'
+                Label:
+                    text: "Retentate flow rate, m3/h"
+                    font_size: '20sp'
+                    size_hint: 2.5, 0.3
+                Label:
+                    id: retentateFlowRateFromStage1
+                    canvas.before:
+                        Color:
+                            rgb: 0.8, 0.8, 0.8, 1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    halign: 'center'
+                    valign: 'center'
+                    font_size: 40
+                    text_size: 550, None
+                    size_hint: 1, 0.3
+                    shorten: True
+                    shorten_from: 'right'
+                Label:
+                    id: retentateFlowRateFromStage2
+                    canvas.before:
+                        Color:
+                            rgb: 0.5, 0.5, 0.5, 1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    halign: 'center'
+                    valign: 'center'
+                    font_size: 40
+                    text_size: 550, None
+                    size_hint: 1, 0.3
+                    shorten: True
+                    shorten_from: 'right'
+                Label:
+                    id: retentateFlowRateFromStage3
+                    canvas.before:
+                        Color:
+                            rgb: 0.8, 0.8, 0.8, 1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    halign: 'center'
+                    valign: 'center'
+                    font_size: 40
+                    text_size: 550, None
+                    size_hint: 1, 0.3
+                    shorten: True
+                    shorten_from: 'right'
+                Label:
+                    text: "Retentate pressure, atm"
+                    font_size: '20sp'
+                    size_hint: 2.5, 0.3
+                Label:
+                    id: retentatePressureFromStage1
+                    canvas.before:
+                        Color:
+                            rgb: 0.5, 0.5, 0.5, 1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    halign: 'center'
+                    valign: 'center'
+                    font_size: 40
+                    text_size: 550, None
+                    size_hint: 1, 0.3
+                    shorten: True
+                    shorten_from: 'right'
+                Label:
+                    id: retentatePressureFromStage2
+                    canvas.before:
+                        Color:
+                            rgb: 0.8, 0.8, 0.8, 1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    halign: 'center'
+                    valign: 'center'
+                    font_size: 40
+                    text_size: 550, None
+                    size_hint: 1, 0.3
+                    shorten: True
+                    shorten_from: 'right'
+                Label:
+                    id: retentatePressureFromStage3
+                    canvas.before:
+                        Color:
+                            rgb: 0.5, 0.5, 0.5, 1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    halign: 'center'
+                    valign: 'center'
+                    font_size: 40
+                    text_size: 550, None
+                    size_hint: 1, 0.3
+                    shorten: True
+                    shorten_from: 'right'
+
+<RootWidget>:
+    CalScreen:
+        name: "cal_screen"

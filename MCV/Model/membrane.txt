@@ -1,0 +1,206 @@
+<CalScreen>:
+    GridLayout:
+        cols:1
+        GridLayout
+            cols:2
+            size_hint: 1, 2.5
+            GridLayout:
+                padding: 15, 15
+                spacing: 1, 1
+                size_hint: 2, 2
+                cols:1
+                Label:
+                    text: "Membrane Info"
+                    bold: True
+                    font_size: '20sp'
+                    size_hint: 0.1, 0.2
+                GridLayout:
+                    cols:2
+                    size_hint: 1, 2
+                    Label:
+                        text: "Membrane name"
+                        font_size: '20sp'
+                    TextInput:
+                        id: membraneName
+                        hint_text: "TMG20D-400"
+                    Label:
+                        text: "Length, m"
+                        font_size: '20sp'
+                    TextInput:
+                        id: membraneLength
+                        hint_text: "1"
+                    Label:
+                        text: "width, m"
+                        font_size: '20sp'
+                    TextInput:
+                        id: membraneWidth
+                        hint_text: "37.2"
+                    Label:
+                        text: "Aw @298.15K, m/atm/s"
+                        font_size: '20sp'
+                    TextInput:
+                        id: Aw_25
+                        hint_text: "9.6203e-7"
+                    Label:
+                        text: "Bs @298.15K, m/s"
+                        font_size: '20sp'
+                    TextInput:
+                        id: Bs_25
+                        hint_text: "1.61277e-7"
+                    Label:
+                        text: "Fouling factor"
+                        font_size: '20sp'
+                    TextInput:
+                        id: foulingFactor
+                        hint_text: "1"
+                    Label:
+                        text: "feed spacer thickness, m"
+                        font_size: '20sp'
+                    TextInput:
+                        id: feedSpacerThickness
+                        hint_text: "8.6e-4"
+                    Label:
+                        text: "feed spacer Void Fraction"
+                        font_size: '20sp'
+                    TextInput:
+                        id: spacerVoidFraction
+                        hint_text: "0.9058"
+                    Label:
+                        text: "hydraulic Diameter, m"
+                        font_size: '20sp'
+                    TextInput:
+                        id: hydraulicDiameter
+                        hint_text: "8.126e-4"
+                    Label:
+                        text: "length of Filament"
+                        font_size: '20sp'
+                    TextInput:
+                        id: lengthOfFilament
+                        hint_text: "2.77e-3"
+                    Label:
+                        text: "characteristic constant, A*"
+                        font_size: '20sp'
+                    TextInput:
+                        id: charA
+                        hint_text: "7.38"
+                    Label:
+                        text: "characteristic constant, n"
+                        font_size: '20sp'
+                    TextInput:
+                        id: charN
+                        hint_text: "0.34"
+            GridLayout:
+                cols:1
+                Label:
+                    text: "steps"
+                    font_size: '20sp'
+                    size_hint: 1, 1
+                TextInput:
+                    id: steps
+                    hint_text: "100"
+                    size_hint: 1, 0.4
+                Label:
+                    text: "Step size, m"
+                    font_size: '20sp'
+                    size_hint: 1, 1
+                TextInput:
+                    id: stepSize
+                    hint_text: ""
+                    size_hint: 1, 0.4
+        Label:
+            text: "Feed Info"
+            bold: True
+            font_size: '20sp'
+            size_hint: 0.1, 0.2
+        GridLayout:
+            cols:2
+            size_hint: 1, 0.5
+            GridLayout
+                cols:4
+                size_hint: 0.1, 0.5
+                Label:
+                    text: "Feed solute concentration, kg/m3"
+                    font_size: '20sp'
+                    size_hint: 1.3, 0.5
+                TextInput:
+                    id: feedSoluteConcentration
+                    hint_text: "1.09862"
+                    size_hint: 0.3, 0.5
+                Label:
+                    text: "Feed temperature, K"
+                    font_size: '20sp'
+                TextInput:
+                    id: feedTemperature
+                    hint_text: "298.15"
+                    size_hint: 0.3, 0.5
+                Label:
+                    text: "Feed pressure, atm"
+                    font_size: '20sp'
+                TextInput:
+                    id: feedPressure
+                    hint_text: "9.2"
+                    size_hint: 0.3, 0.5
+                Label:
+                    text: "Feed flow rate, m3/h"
+                    font_size: '20sp'
+                TextInput:
+                    id: feedFlowRate
+                    hint_text: "34"
+                    size_hint: 0.3, 0.5
+            RelativeLayout:
+                size_hint: 0.015, 0.1
+                Button:
+                    background_color: 255, 0, 0, 1
+                    text: "run"
+                    font_size: '26sp'
+                    bold: True
+                    on_press: root.run()
+                    size_hint: 0.5,0.5
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        GridLayout:
+            cols:1
+            size_hint: 1, 1.5
+            Label:
+                text: "Permeate and Retentate Info"
+                bold: True
+                font_size: '20sp'
+                size_hint: 1, 0.2
+            GridLayout:
+                cols:2
+                size_hint: 1, 1
+                Label:
+                    text: "permeate solute concentration, kg/m3"
+                    font_size: '20sp'
+                    size_hint: 1, 0.3
+                TextInput:
+                    id: permeateSoluteConcentration
+                    hint_text: ""
+                    size_hint: 1, 0.3
+                Label:
+                    text: "Permeate flow rate, m3/h"
+                    font_size: '20sp'
+                    size_hint: 1, 0.3
+                TextInput:
+                    id: permeateFlowRate
+                    hint_text: ""
+                    size_hint: 1, 0.3
+                Label:
+                    text: "permeate solute concentration, kg/m3"
+                    font_size: '20sp'
+                    size_hint: 1, 0.3
+                TextInput:
+                    id: permeateSoluteConcentration
+                    hint_text: ""
+                    size_hint: 1, 0.3
+                Label:
+                    text: "Permeate flow rate, m3/h"
+                    font_size: '20sp'
+                    size_hint: 1, 0.3
+                TextInput:
+                    id: permeateFlowRate
+                    hint_text: ""
+                    size_hint: 1, 0.3
+
+<RootWidget>:
+    CalScreen:
+        name: "login_screen"
