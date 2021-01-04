@@ -18,4 +18,4 @@ class Stream(object):
     '''
 
     def osmoticPressure(self):
-        return 0.7994 * self.soluteConcentration * (1 + 0.003 * (self.temperature - 273.15))
+        return 0.7994 * self.soluteConcentration * (1 + 0.003 * (self.temperature - 298.15))

@@ -57,7 +57,7 @@ class Stage(object):
     '''
 
     def findQp(self):
-        Qp_guess = self.feed.flowRate * 0.6 * self.steps.stepCoefficient()
+        Qp_guess = self.feed.flowRate * 0.8 * self.steps.stepCoefficient()
 
         def funcDifferenceQp(Qp):
             Qf = self.feed.flowRate
@@ -73,11 +73,33 @@ class Stage(object):
             self.retentate.pressure = self.feed.pressure - pressureDrop.pressureDrop(self.steps.lengthOfEachStep())
             bulk2 = Bulk(self.permeate, self.retentate)
             NDPfb = bulk2.pressure - self.permeate.pressure - bulk2.osmoticPressure() + self.permeate.osmoticPressure()
-            Qp_calc = reverseOsmosisElement.AwT() * self.steps.effectiveAreaOfEachStep() * NDPfb * Am
+            Qp_calc = reverseOsmosisElement.AwT() * Am * NDPfb
             return Qp - Qp_calc
 
         permeateFlowRate, = fsolve(funcDifferenceQp, Qp_guess)
         return permeateFlowRate
+
+    def showError(self):
+        Qp = self.findQp()
+        Qf = self.feed.flowRate
+        Cf = self.feed.soluteConcentration
+        Am = self.steps.effectiveAreaOfEachStep()
+        Cp = self.findCp(Qp)
+        Cr = (Qf * Cf - Qp * Cp) / (Qf - Qp)
+        self.retentate.soluteConcentration = Cr
+        self.retentate.flowRate = Qf - Qp
+        bulk = Bulk(self.permeate, self.retentate)
+        reverseOsmosisElement = ReverseOsmosisElement(bulk, self.steps.membrane)
+        pressureDrop = PressureDrop(reverseOsmosisElement)
+        self.retentate.pressure = self.feed.pressure - pressureDrop.pressureDrop(self.steps.lengthOfEachStep())
+        bulk2 = Bulk(self.permeate, self.retentate)
+        NDPfb = bulk2.pressure - self.permeate.pressure - bulk2.osmoticPressure() + self.permeate.osmoticPressure()
+        Qp_calc = reverseOsmosisElement.AwT() * self.steps.effectiveAreaOfEachStep() * NDPfb
+        massTransfer = MassTransfer(reverseOsmosisElement)
+        Cw = Cp + ((Cf + Cr) / 2 - Cp) * np.exp(Qp / Am / massTransfer.massTransferCoefficient())
+        Js = reverseOsmosisElement.BsT() * (Cw - Cp)  # kg/m2/s
+        Cp_calc = Js * self.steps.effectiveAreaOfEachStep() / Qp  # kg/m3
+        return Qp - Qp_calc, Cp - Cp_calc
 
     def nextStage(self):
         Qp = self.findQp()

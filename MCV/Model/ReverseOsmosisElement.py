@@ -15,7 +15,7 @@ class ReverseOsmosisElement(object):
 
     def BsT(self):
         T = self.bulk.temperature
-        if T <= 25:
+        if T <= 298.15:
             TCFs = 1 + 0.05 * (T - 298.15)
         else:
             TCFs = 1 + 0.08 * (T - 298.15)
@@ -23,7 +23,7 @@ class ReverseOsmosisElement(object):
 
     def AwT(self):
         T = self.bulk.temperature
-        if T >= 25:
+        if T >= 298.15:
             TCFp = np.exp(0.0343 * (T - 298.15))
         else:
             TCFp = np.exp(0.0307 * (T - 298.15))

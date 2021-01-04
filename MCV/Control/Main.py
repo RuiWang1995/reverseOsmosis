@@ -26,6 +26,7 @@ def finalArrays(feed, steps):
         if i < Nx:
             feedArray.append(stage.nextStage())
         permeateSoluteConcentration = totalPermeateSoluteAmount / permeateFlowRate
+        print(stage.showError())
     return [feedArray, permeateArray, retentateArray, permeateFlowRate, permeateSoluteConcentration,
             retentateFlowRate, retentateSoluteConcentration
             ]
@@ -57,14 +58,15 @@ class MainBody(object):
             if self.setOfColumns.column2 is None:
                 return [listFromColumn1]
             else:
-                feed2 = listFromColumn1[0][self.steps.numberOfStages]
-                feed2.flowRate = feed2.flowRate * self.setOfColumns.column1.numberOfPressureVessels / self.setOfColumns.column2.numberOfPressureVessels
+                feed2 = listFromColumn1[0][-1]
+                feed2.pressure = listFromColumn1[2][-1].pressure
+                feed2.flowRate = listFromColumn1[2][self.steps.numberOfStages].flowRate * self.setOfColumns.column1.numberOfPressureVessels / self.setOfColumns.column2.numberOfPressureVessels
                 listFromColumn2 = finalArrays(feed2, self.steps)
                 if self.setOfColumns.column3 is None:
                     return [listFromColumn1, listFromColumn2]
                 else:
-                    feed3 = listFromColumn2[0][self.steps.numberOfStages]
-                    feed3.flowRate = feed3.flowRate * self.setOfColumns.column2.numberOfPressureVessels/ self.setOfColumns.column3.numberOfPressureVessels
+                    feed3 = listFromColumn2[0][-1]
+                    feed3.flowRate = listFromColumn2[2][self.steps.numberOfStages].flowRate * self.setOfColumns.column2.numberOfPressureVessels/ self.setOfColumns.column3.numberOfPressureVessels
                     listFromColumn3 = finalArrays(feed3, self.steps)
                     return [listFromColumn1, listFromColumn2, listFromColumn3]
 
