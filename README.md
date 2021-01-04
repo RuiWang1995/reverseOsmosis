@@ -4,3 +4,5 @@ This is an application of multistage reverse osmosis process designed based on m
 
 'Performance analysis of a medium-sized industrial reverse osmosis brackish water desalination plant'
 
+The main.py is in View folder.
+
