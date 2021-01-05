@@ -5,7 +5,6 @@
 
 from scipy.optimize import fsolve
 import numpy as np
-
 from MCV.Control.MassTransfer import MassTransfer
 from MCV.Control.PressureDrop import PressureDrop
 from MCV.Model.Bulk import Bulk
@@ -138,11 +137,3 @@ class Stage(object):
         Pr = self.feed.pressure - pressureDrop.pressureDrop(self.steps.lengthOfEachStep())
         retentateFromThisStage = Retentate(Cr, self.permeate.temperature, Pr, Qr, 2)
         return retentateFromThisStage
-
-
-
-
-
-
-
-
